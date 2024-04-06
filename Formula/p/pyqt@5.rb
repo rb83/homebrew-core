@@ -17,8 +17,6 @@ class PyqtAT5 < Formula
   end
 
   depends_on "pyqt-builder" => :build
-  depends_on "python-setuptools" => :build
-  depends_on "sip" => :build
   depends_on "python@3.12"
   depends_on "qt@5"
 
@@ -65,6 +63,7 @@ class PyqtAT5 < Formula
   end
 
   def install
+    sip_install = Formula["pyqt-builder"].opt_libexec/"bin/sip-install"
     site_packages = prefix/Language::Python.site_packages(python3)
     args = [
       "--target-dir", site_packages,
@@ -73,10 +72,10 @@ class PyqtAT5 < Formula
       "--no-designer-plugin",
       "--no-qml-plugin"
     ]
-    system "sip-install", *args
+    system sip_install, *args
 
     resource("pyqt5-sip").stage do
-      system python3, *Language::Python.setup_install_args(prefix, python3)
+      system python3, "-m", "pip", "install", *std_pip_args(build_isolation: true), "."
     end
 
     resources.each do |r|
@@ -87,7 +86,7 @@ class PyqtAT5 < Formula
           [tool.sip.project]
           sip-include-dirs = ["#{site_packages}/PyQt#{version.major}/bindings"]
         EOS
-        system "sip-install", "--target-dir", site_packages
+        system sip_install, "--target-dir", site_packages
       end
     end
   end
