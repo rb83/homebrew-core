@@ -3,8 +3,8 @@ class Ocrmypdf < Formula
 
   desc "Adds an OCR text layer to scanned PDF files"
   homepage "https://ocrmypdf.readthedocs.io/en/latest/"
-  url "https://files.pythonhosted.org/packages/43/ee/9d72ac235cc38e041ccaa50e47c069d243ac3285726bdc9221c921c02191/ocrmypdf-16.1.2.tar.gz"
-  sha256 "d1f9c62b3a0cb090218e8f719d85d110bad95cb73e83dec05842652d173b0c29"
+  url "https://files.pythonhosted.org/packages/ff/e3/4683f9b79f61d8778c3f64b6632be5ff64925997cb9dbf7154619371ee04/ocrmypdf-16.2.0.tar.gz"
+  sha256 "1fa2b4a8b4b6801dc66f50191fc944a438e6cd68585151326e87b87d829dff35"
   license "MPL-2.0"
 
   bottle do
@@ -22,6 +22,7 @@ class Ocrmypdf < Formula
   depends_on "ghostscript"
   depends_on "img2pdf"
   depends_on "jbig2enc"
+  depends_on "libheif" # for pi-heif
   depends_on "libpng"
   depends_on "pillow"
   depends_on "pngquant"
@@ -58,8 +59,8 @@ class Ocrmypdf < Formula
   end
 
   resource "lxml" do
-    url "https://files.pythonhosted.org/packages/2b/b4/bbccb250adbee490553b6a52712c46c20ea1ba533a643f1424b27ffc6845/lxml-5.1.0.tar.gz"
-    sha256 "3eea6ed6e6c918e468e693c41ef07f3c3acc310b70ddd9cc72d9ef84bc9564ca"
+    url "https://files.pythonhosted.org/packages/ea/e2/3834472e7f18801e67a3cd6f3c203a5456d6f7f903cfb9a990e62098a2f3/lxml-5.2.1.tar.gz"
+    sha256 "3f7765e69bbce0906a7c74d5fe46d2c7a7596147318dbc08e4a2431f3060e306"
   end
 
   resource "markdown-it-py" do
@@ -82,9 +83,14 @@ class Ocrmypdf < Formula
     sha256 "6004da3ad1a7a4d45930cb950393df89b068e73be365a6ff64a838d37bcb08c4"
   end
 
+  resource "pi-heif" do
+    url "https://files.pythonhosted.org/packages/92/e5/a674bb9ede3495d64a08ec5ed79847d881fc88ff9c93187d952591d07b91/pi_heif-0.16.0.tar.gz"
+    sha256 "53fd0c582b01f1763ffa9959694164424c658eb3af5843f187ec019a0f0ef2b4"
+  end
+
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/f4/8a/23f62747cf7ea02cad56d82ca881c3aeba8a2beaf85c209017a18ab6865f/pikepdf-8.13.0.tar.gz"
-    sha256 "3bbd79c7cd6630361d83e75132aeaf3a64ceb837f82870bafdc210a31e3d917a"
+    url "https://files.pythonhosted.org/packages/7c/47/87a19cc2af6e82c00d79e9bcd75d9ce3a964943386f44e441d76d086c674/pikepdf-8.15.1.tar.gz"
+    sha256 "653aceedb2b3a4cdb579a55aaf78632b434b7cd53e2557b2bc8c8590bfe1d92b"
   end
 
   resource "pluggy" do
