@@ -4,7 +4,7 @@ class Libpq < Formula
   url "https://ftp.postgresql.org/pub/source/v16.2/postgresql-16.2.tar.bz2"
   sha256 "446e88294dbc2c9085ab4b7061a646fa604b4bec03521d5ea671c2e5ad9b2952"
   license "PostgreSQL"
-  revision 1
+  revision 2
 
   livecheck do
     url "https://ftp.postgresql.org/pub/source/"
@@ -24,7 +24,7 @@ class Libpq < Formula
   keg_only "conflicts with postgres formula"
 
   depends_on "pkg-config" => :build
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   # GSSAPI provided by Kerberos.framework crashes when forked.
   # See https://github.com/Homebrew/homebrew-core/issues/47494.
   depends_on "krb5"
