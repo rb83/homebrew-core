@@ -4,7 +4,7 @@ class Libmspub < Formula
   url "https://dev-www.libreoffice.org/src/libmspub/libmspub-0.1.4.tar.xz"
   sha256 "ef36c1a1aabb2ba3b0bedaaafe717bf4480be2ba8de6f3894be5fd3702b013ba"
   license "MPL-2.0"
-  revision 15
+  revision 16
 
   livecheck do
     url "https://dev-www.libreoffice.org/src/"
@@ -24,7 +24,7 @@ class Libmspub < Formula
   depends_on "boost" => :build
   depends_on "libwpg" => :build
   depends_on "pkg-config" => :build
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on "librevenge"
   depends_on "libwpd"
 
