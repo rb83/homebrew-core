@@ -6,6 +6,7 @@ class PhpAT82 < Formula
   mirror "https://fossies.org/linux/www/php-8.2.18.tar.xz"
   sha256 "44b306fc021e56441f691da6c3108788bd9e450f293b3bc70fcd64b08dd41a50"
   license "PHP-3.01"
+  revision 1
 
   livecheck do
     url "https://www.php.net/downloads"
@@ -40,7 +41,7 @@ class PhpAT82 < Formula
   depends_on "gd"
   depends_on "gettext"
   depends_on "gmp"
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on "krb5"
   depends_on "libpq"
   depends_on "libsodium"
