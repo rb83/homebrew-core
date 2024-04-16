@@ -4,7 +4,7 @@ class Liblcf < Formula
   url "https://easyrpg.org/downloads/player/0.8/liblcf-0.8.tar.xz"
   sha256 "6b0d8c7fefe3d66865336406f69ddf03fe59e52b5601687265a4d1e47a25c386"
   license "MIT"
-  revision 2
+  revision 3
   head "https://github.com/EasyRPG/liblcf.git", branch: "master"
 
   bottle do
@@ -19,7 +19,7 @@ class Liblcf < Formula
 
   depends_on "cmake" => :build
   depends_on "expat" # Building against `liblcf` fails with `uses_from_macos`
-  depends_on "icu4c"
+  depends_on "icu4c@75"
 
   def install
     system "cmake", "-S", ".", "-B", "build",
