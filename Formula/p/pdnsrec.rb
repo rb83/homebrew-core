@@ -4,6 +4,7 @@ class Pdnsrec < Formula
   url "https://downloads.powerdns.com/releases/pdns-recursor-5.0.3.tar.bz2"
   sha256 "01d170a2850eb2aca501d6838a3444136589980d5cb2c2b53392b76459e38c07"
   license "GPL-2.0-only" => { with: "openvpn-openssl-exception" }
+  revision 1
 
   livecheck do
     url "https://downloads.powerdns.com/releases/"
