@@ -2,7 +2,7 @@ class Mapnik < Formula
   desc "Toolkit for developing mapping applications"
   homepage "https://mapnik.org/"
   license "LGPL-2.1-or-later"
-  revision 26
+  revision 27
   head "https://github.com/mapnik/mapnik.git", branch: "master"
 
   # TODO: Try switching to CMake build on next release as it works better with
@@ -48,7 +48,7 @@ class Mapnik < Formula
   depends_on "freetype"
   depends_on "gdal"
   depends_on "harfbuzz"
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on "jpeg-turbo"
   depends_on "libpng"
   depends_on "libpq"
@@ -62,7 +62,7 @@ class Mapnik < Formula
   def install
     boost = Formula["boost"]
     harfbuzz = Formula["harfbuzz"]
-    icu = Formula["icu4c"]
+    icu = deps.map(&:to_formula).find { |f| f.name.match?(/^icu4c@\d+$/) }
     jpeg = Formula["jpeg-turbo"]
     libpng = Formula["libpng"]
     libpq = Formula["libpq"]
