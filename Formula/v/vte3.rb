@@ -4,6 +4,7 @@ class Vte3 < Formula
   url "https://download.gnome.org/sources/vte/0.76/vte-0.76.0.tar.xz"
   sha256 "bbce30b8f504370b12d6439c07a82993e97d7e9afe2dd367817cd58ff029ffda"
   license "LGPL-2.0-or-later"
+  revision 1
 
   bottle do
     sha256 arm64_sonoma:   "892ea02960bc4181b02063267e27308267efb63ff0072f3fca87fbca07a91846"
@@ -26,7 +27,7 @@ class Vte3 < Formula
   depends_on "gnutls"
   depends_on "gtk+3"
   depends_on "gtk4"
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on macos: :mojave
   depends_on "pango"
   depends_on "pcre2"
