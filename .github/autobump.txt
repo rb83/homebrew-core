@@ -1425,6 +1425,7 @@ omega
 omniorb
 onednn
 onedrive
+onnxruntime
 ooniprobe
 opa
 open-adventure
