@@ -1391,6 +1391,7 @@ npth
 nsd
 nsq
 nss
+nsync
 ntfy
 nuclei
 numactl
