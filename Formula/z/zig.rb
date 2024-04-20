@@ -2,8 +2,8 @@ class Zig < Formula
   desc "Programming language designed for robustness, optimality, and clarity"
   homepage "https://ziglang.org/"
   # TODO: Check if we can use unversioned `llvm` at version bump.
-  url "https://ziglang.org/download/0.11.0/zig-0.11.0.tar.xz"
-  sha256 "72014e700e50c0d3528cef3adf80b76b26ab27730133e8202716a187a799e951"
+  url "https://ziglang.org/download/0.12.0/zig-0.12.0.tar.xz"
+  sha256 "a6744ef84b6716f976dad923075b2f54dc4f785f200ae6c8ea07997bd9d9bd9a"
   license "MIT"
 
   livecheck do
@@ -27,7 +27,7 @@ class Zig < Formula
   # Check: https://github.com/ziglang/zig/blob/#{version}/CMakeLists.txt
   # for supported LLVM version.
   # When switching to `llvm`, remove the `on_linux` block below.
-  depends_on "llvm@16" => :build
+  depends_on "llvm@17" => :build
   depends_on macos: :big_sur # https://github.com/ziglang/zig/issues/13313
   depends_on "z3"
   depends_on "zstd"
@@ -43,15 +43,13 @@ class Zig < Formula
   fails_with :gcc
 
   def install
-    # Make sure `llvm@16` is used.
-    ENV.prepend_path "PATH", Formula["llvm@16"].opt_bin
-    ENV["CC"] = Formula["llvm@16"].opt_bin/"clang"
-    ENV["CXX"] = Formula["llvm@16"].opt_bin/"clang++"
+    # Make sure `llvm@17` is used.
+    ENV.prepend_path "PATH", Formula["llvm@17"].opt_bin
+    ENV["CC"] = Formula["llvm@17"].opt_bin/"clang"
+    ENV["CXX"] = Formula["llvm@17"].opt_bin/"clang++"
 
-    # Work around duplicate symbols with Xcode 15 linker.
-    # Remove on next release.
-    # https://github.com/ziglang/zig/issues/17050
-    ENV.append "LDFLAGS", "-Wl,-ld_classic" if DevelopmentTools.clang_build_version >= 1500
+    # build patch for libunwind linkage issue
+    ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm@17"].opt_lib
 
     # Workaround for https://github.com/Homebrew/homebrew-core/pull/141453#discussion_r1320821081.
     # This will likely be fixed upstream by https://github.com/ziglang/zig/pull/16062.
